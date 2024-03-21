@@ -8,7 +8,7 @@
         "description": "The FortiAI Configuration widget helps to set up LLM Integration and Model to be used for a different mode of the FortiAI.",
         "pages": [],
         "certified": "Yes",
-        "publisher": null,
+        "publisher": "Fortinet",
         "compatibility": [
             "7.4.3"
         ],
