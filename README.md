@@ -16,5 +16,5 @@ The **FortiAI Configuration** widget helps to set up LLM Integration to use and 
 
 ## Next Steps
 
-| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) | [Contents](./docs/contents.md) |
-|----------------------------------------------|------------------------------------------------|--------------------------|--------------------------------|
+| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) |
+|----------------------------------------------|------------------------------------------------|--------------------------|
