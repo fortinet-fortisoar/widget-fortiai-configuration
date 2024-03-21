@@ -4,20 +4,20 @@
     "subTitle": "FortiAI Configuration will configure LLM Integration to use.",
     "version": "1.0.0",
     "published_date": 1710479047,
-    "releaseNotes": "unavailable",
     "metadata": {
-        "description": "",
+        "description": "The FortiAI Configuration widget helps to set up LLM Integration and Model to be used for a different mode of the FortiAI.",
         "pages": [],
         "certified": "Yes",
         "publisher": null,
         "compatibility": [
             "7.4.3"
         ],
+        "snapshots": [],
         "standalone": true,
+        "help_online": "",
         "windowClass": "Full Width",
         "category": [
             "FortiSOAR Essentials"
         ]
-    },
-    "development": false
+    }
 }
