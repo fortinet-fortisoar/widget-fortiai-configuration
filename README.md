@@ -6,13 +6,14 @@
 
 - **Publisher**: Fortinet  
 
-- **Compatibility**: 7.3.1 and later
+- **Compatibility**: 7.4.3 and later
 
 - **Applicable**: FortiAI Solution Pack
 
 # Overview
 
-The **FortiAI Configuration** widget helps to set up LLM Integration to use and Model to be used for different mode of FortiAI.
+The **FortiAI Configuration** widget helps to set up LLM Integration and Model to be used for a different mode of the FortiAI.
+
 
 ## Next Steps
 
