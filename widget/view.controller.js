@@ -19,12 +19,15 @@
           $scope.llmIntegrationData = {};
           $scope.moveNext = moveNext;
           $scope.moveBack = moveBack;
+          $scope.loadConnectorPage = loadConnectorPage;
           $scope.updateLLMIntegrationData = updateLLMIntegrationData;
           $scope.saveConnectorConfiguration = saveConnectorConfiguration;
           $scope.defaultLLMIntegration = {};
           $scope.isLightTheme = $rootScope.theme.id === 'light';
           $scope.startInfoGraphics = $scope.isLightTheme ? widgetBasePath +'images/fortiAI-start-light.png': widgetBasePath +'images/fortiAI-start-dark.png';
           $scope.connectLLMInfoGraphics = $scope.isLightTheme ? widgetBasePath +'images/fortiAI-connect-llm-light.png': widgetBasePath +'images/fortiAI-connect-llm-dark.png';
+          $scope.connectorFound = true;
+
           init()
           function init() {
             $scope.llmIntegrationData = constants()
@@ -54,47 +57,66 @@
           function moveNext() {
             var currentStepTitle = WizardHandler.wizard('fortiAIConfiguration').currentStep().wzTitle
             if (currentStepTitle === 'Start') {
-              updateLLMIntegrationData('load')
-            }
-            if (currentStepTitle === 'Configuration') {
-              updateKeyStoreValue()  
-              _loadConnectorData($scope.keyStoreValue.llmIntegrationToUse)
+              updateLLMIntegrationData('load');
             }
             if (currentStepTitle === 'Finish') {
-              updateConfigurationRecord()
+              updateConfigurationRecord();
             }
             WizardHandler.wizard('fortiAIConfiguration').next();
           }
 
-          function _loadConnectorData(connectorName) {
-            var queryPayload =
-            {
-              "page": 1,
-              "limit": 30,
-              "logic": "AND",
-              "filters": [
-                  {
-                      "field": "name",
-                      "operator": "eq",
-                      "value": connectorName
-                  }
-              ]
-            }
-            var queryUrl = API.QUERY + 'solutionpacks?$limit=30&$page=1';
-            $http.post(queryUrl, queryPayload).then(function (response) {
-              if (response.data['hydra:totalItems'] === 0) {
-                toaster.error({
-                  body: 'The Connector "' + connectorName + '" is not installed. Install the connector and re-run this wizard to complete the configuration'
-                });
-                return;
-              }
-              $scope.selectedConnector = response.data['hydra:member'][0]
-              $scope.loadConnector($scope.selectedConnector, false, false);
-              $scope.processingConnector = false;
-              _loadConnectorDetails($scope.selectedConnector.uuid)
+          function loadConnectorPage() {
+            updateKeyStoreValue();
+            _loadConnectorData($scope.keyStoreValue.llmIntegrationToUse).then(function() { 
+              if (!$scope.connectorFound) {
+              toaster.error({
+                body: 'The Connector "' + $scope.keyStoreValue.llmIntegrationToUse + '" is not found. Please install the connector and try again.'
+              });
+              return;
+            } 
+            WizardHandler.wizard('fortiAIConfiguration').next();
             });
           }
-
+        
+        
+          function _loadConnectorData(connectorName) {
+            var defer = $q.defer();
+            var queryPayload = {
+                "page": 1,
+                "limit": 30,
+                "logic": "AND",
+                "filters": [{
+                    "field": "name",
+                    "operator": "eq",
+                    "value": connectorName
+                }]
+            };
+            var queryUrl = API.QUERY + 'solutionpacks?$limit=30&$page=1';
+            $http.post(queryUrl, queryPayload).then(function (response) {
+                var connectors = response.data['hydra:member'];
+                if (connectors.length === 0) {
+                    $scope.connectorFound = false;
+                    defer.resolve();
+                } else {
+                    $scope.selectedConnector = connectors[0];
+                    $scope.loadConnector($scope.selectedConnector, false, false);
+                    $scope.processingConnector = false;
+                    if ($scope.selectedConnector.status === null) {
+                        toaster.error({
+                            body: 'The Connector "' + connectorName + '" is not installed. Install the connector and re-run this wizard to complete the configuration'
+                        });
+                        $scope.connectorFound = false;
+                        defer.reject();
+                    } else {
+                        _loadConnectorDetails($scope.selectedConnector.uuid);
+                        $scope.connectorFound = true;
+                        defer.resolve();
+                    }
+                }
+            });
+            return defer.promise;
+          }
+        
           function _loadConnectorDetails(connectorUUID) {
             $scope.processingConnector = true;
             $scope.configuredConnector = false;
