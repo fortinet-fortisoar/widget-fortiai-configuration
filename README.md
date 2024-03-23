@@ -12,7 +12,7 @@
 
 # Overview
 
-The **FortiAI Configuration** widget helps to set up LLM Integration and Model to be used for a different mode of the FortiAI.
+The **FortiAI Configuration** wizard will assist you in configuring FortiAI within your FortiSOAR environment. The configuration process includes selecting LLM Integrations, such as OpenAI, and configuring the integration based on the FortiSOAR user login ID. Additionally, you can modify the default selected LLM model.
 
 
 ## Next Steps

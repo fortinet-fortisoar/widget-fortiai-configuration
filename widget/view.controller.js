@@ -8,9 +8,9 @@
             .module('cybersponse')
             .controller('fortiAIConfiguration100Ctrl', fortiAIConfiguration100Ctrl);
 
-        fortiAIConfiguration100Ctrl.$inject = ['$scope', 'API', '$rootScope', '$http', '$q', '$resource', 'toaster', 'WizardHandler', '$window', '_', 'currentPermissionsService',  'marketplaceService', 'connectorService', 'CommonUtils', '$controller', 'widgetBasePath'];
+        fortiAIConfiguration100Ctrl.$inject = ['$scope', '$rootScope', 'fortiAiConfigService', 'toaster', 'WizardHandler', '$window', '_', 'currentPermissionsService', 'connectorService', 'CommonUtils', '$controller', 'widgetBasePath'];
 
-        function fortiAIConfiguration100Ctrl($scope, API, $rootScope, $http, $q, $resource, toaster, WizardHandler, $window, _, currentPermissionsService, marketplaceService, connectorService, CommonUtils, $controller, widgetBasePath) {
+        function fortiAIConfiguration100Ctrl($scope, $rootScope, fortiAiConfigService, toaster, WizardHandler, $window, _, currentPermissionsService, connectorService, CommonUtils, $controller, widgetBasePath) {
           $controller('BaseConnectorCtrl', {
             $scope: $scope
           });
@@ -26,13 +26,12 @@
           $scope.isLightTheme = $rootScope.theme.id === 'light';
           $scope.startInfoGraphics = $scope.isLightTheme ? widgetBasePath +'images/fortiAI-start-light.png': widgetBasePath +'images/fortiAI-start-dark.png';
           $scope.connectLLMInfoGraphics = $scope.isLightTheme ? widgetBasePath +'images/fortiAI-connect-llm-light.png': widgetBasePath +'images/fortiAI-connect-llm-dark.png';
-          $scope.connectorFound = true;
 
           init()
           function init() {
-            $scope.llmIntegrationData = constants()
+            $scope.llmIntegrationData = fortiAiConfigService.constants();
             $scope.defaultLLMIntegration = $scope.llmIntegrationData.defaultLLMIntegration
-            getKeyStoreRecord($scope.llmIntegrationData.queryForKeyStore, 'keys').then(function (response) {
+            fortiAiConfigService.getKeyStoreRecord($scope.llmIntegrationData.queryForKeyStore, 'keys').then(function (response) {
               if (response['hydra:member'] && (response['hydra:member'][0])) {
                 $scope.entity = response;
                 $scope.keyStoreValue = $scope.entity['hydra:member'][0].jSONValue;
@@ -43,97 +42,23 @@
             })
           }
 
-          function getKeyStoreRecord(queryObject, module) {
-            var defer = $q.defer();
-            var url = API.QUERY + module;
-            $resource(url).save(queryObject, function (response) {
-                defer.resolve(response);
-            }, function (err) {
-                defer.reject(err);
-            })
-            return defer.promise;
-          }
-
           function moveNext() {
             var currentStepTitle = WizardHandler.wizard('fortiAIConfiguration').currentStep().wzTitle
             if (currentStepTitle === 'Start') {
               updateLLMIntegrationData('load');
             }
             if (currentStepTitle === 'Finish') {
-              updateConfigurationRecord();
+              fortiAiConfigService.updateConfigurationRecord($scope.keyStoreValue, $scope.entity['hydra:member'][0].uuid);
             }
             WizardHandler.wizard('fortiAIConfiguration').next();
           }
 
           function loadConnectorPage() {
             updateKeyStoreValue();
-            _loadConnectorData($scope.keyStoreValue.llmIntegrationToUse).then(function() { 
-              if (!$scope.connectorFound) {
-              toaster.error({
-                body: 'The Connector "' + $scope.keyStoreValue.llmIntegrationToUse + '" is not found. Please install the connector and try again.'
-              });
-              return;
-            } 
-            WizardHandler.wizard('fortiAIConfiguration').next();
-            });
-          }
-        
-        
-          function _loadConnectorData(connectorName) {
-            var defer = $q.defer();
-            var queryPayload = {
-                "page": 1,
-                "limit": 30,
-                "logic": "AND",
-                "filters": [{
-                    "field": "name",
-                    "operator": "eq",
-                    "value": connectorName
-                }]
-            };
-            var queryUrl = API.QUERY + 'solutionpacks?$limit=30&$page=1';
-            $http.post(queryUrl, queryPayload).then(function (response) {
-                var connectors = response.data['hydra:member'];
-                if (connectors.length === 0) {
-                    $scope.connectorFound = false;
-                    defer.resolve();
-                } else {
-                    $scope.selectedConnector = connectors[0];
-                    $scope.loadConnector($scope.selectedConnector, false, false);
-                    $scope.processingConnector = false;
-                    if ($scope.selectedConnector.status === null) {
-                        toaster.error({
-                            body: 'The Connector "' + connectorName + '" is not installed. Install the connector and re-run this wizard to complete the configuration'
-                        });
-                        $scope.connectorFound = false;
-                        defer.reject();
-                    } else {
-                        _loadConnectorDetails($scope.selectedConnector.uuid);
-                        $scope.connectorFound = true;
-                        defer.resolve();
-                    }
-                }
-            });
-            return defer.promise;
-          }
-        
-          function _loadConnectorDetails(connectorUUID) {
-            $scope.processingConnector = true;
-            $scope.configuredConnector = false;
-            $scope.isConnectorHealthy = false;
-            marketplaceService.getContentDetails(API.BASE + 'solutionpacks/' + connectorUUID + '?$relationships=true').then(function (response) {
-              $scope.contentDetail = response.data;
-              if(connector.configuration.length > 0){
-                $scope.isConnectorConfigured = true;
-                connectorService.getConnectorHealth(response.data, $scope.selectedConnector.configuration[0].config_id, $scope.selectedConnector.configuration[0].agent).then(function (data) {
-                if (data.status === "Available") {
-                  $scope.isConnectorHealthy = true;
-                }
-                });
-              }
-              else{
-                $scope.isConnectorConfigured = false;
-              }
+            fortiAiConfigService.loadConnectorData($scope.keyStoreValue.llmIntegrationToUse).then(function(selectedConnector) { 
+              $scope.selectedConnector = selectedConnector;
+              $scope.loadConnector($scope.selectedConnector, false, false);
+              WizardHandler.wizard('fortiAIConfiguration').next(); 
             });
           }
 
@@ -255,69 +180,8 @@
             $scope.keyStoreValue.llmIntegrationData[llmIntegrationToUse] = llmIntegrationDict;
           }
 
-          function updateConfigurationRecord() {
-            $resource(API.API_3_BASE + 'keys' + '/' + $scope.entity['hydra:member'][0].uuid, null, {
-              'update': {
-                method: 'PUT'
-              }
-            }).update({ 'jSONValue': $scope.keyStoreValue}).$promise.then(function () {
-            });
-            toaster.success({
-              body: 'Successfully updated FortiAI Configuration.'
-            });
-          }
-
           function moveBack() {
             WizardHandler.wizard('fortiAIConfiguration').previous();
-          }
-
-          function constants() {
-            return {
-                queryForKeyStore:{
-                    "sort": [
-                      {
-                        "field": "id",
-                        "direction": "ASC",
-                        "_fieldName": "id"
-                      }
-                    ],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": [
-                      {
-                        "field": "key",
-                        "operator": "like",
-                        "_operator": "like",
-                        "value": "%FortiAI Configurations%",
-                        "type": "primitive"
-                      },
-                      {
-                        "sort": [],
-                        "limit": 30,
-                        "logic": "AND",
-                        "filters": []
-                      }
-                    ],
-                    "__selectFields": [
-                      "id",
-                      "key",
-                      "value",
-                      "notes",
-                      "@id",
-                      "@type",
-                      "jSONValue"
-                    ]
-                },
-                defaultLLMIntegration:{
-                  "title": "",
-                  "name": "",
-                  "conversationModel": "",
-                  "pBGenerationModel": "",
-                  "isMultiConfigAvailable": "",
-                  "modelList": [],
-                  "llmIntegrationsList": []
-                }
-              }
           }
         }
     })();
