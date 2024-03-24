@@ -21,12 +21,12 @@
                         <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
                             <div class="font-size-40 line-height-1">FortiAI Configuration</div><br />
                             <div class="padding-right-30 margin-top-sm max-width-450px">
-                              <p class="font-size-14 margin-bottom-0">This wizard will guide you through the initial setup needed to prepare your FortiSOAR environment for FortiAI. The process includes choosing your LLM Integrations (such as OpenAI), selecting the model to use, and enable/disable multiple configuration settings.</p>
+                              <p class="font-size-14 margin-bottom-0">This wizard will assist you in configuring FortiAI within your FortiSOAR environment. The configuration process includes selecting LLM Integrations, such as OpenAI, and configuring the integration based on the FortiSOAR user login ID. Additionally, you can modify the default selected LLM model.</p>
                             </div>
                             <button type="button" class="btn btn-primary btn-sm margin-top-xlg text-transform-none font-size-14"
                               data-ng-click="moveNext()" id="solutionpack-next-btn">Let's get started<i
                                 class="fa fa-chevron-right margin-left-sm"></i></button>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                             <div style="border:2px solid; border-color: #29323e;" class="padding-20">
                                 <div class="font-size-30">Large Language Model (LLM) Configuration</div>
                                 <div class="padding-right-30 margin-top-sm max-width-450px">
-                                <p class="font-size-14 margin-bottom-0 grey-text">Configure the integration, such as OpenAI, and specify the respective model to be used for different modes.</p>
+                                <p class="font-size-14 margin-bottom-0 grey-text">Select the LLM integration and specify the respective model to be used for different modes.</p>
                                 </div><br />
                                 <div>
                                     <div class="padding-bottom-md">
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div style="border-left: 2px solid;border-right: 2px solid;border-bottom: 2px solid; border-color: #29323e;" class="padding-20">
-                                <div class="font-size-30">Integration RBAC</div>
+                                <div class="font-size-30">Multi User Configuration</div>
                                 <div class="padding-right-30 margin-top-sm max-width-450px">
                                 <p class="font-size-14 margin-bottom-0 grey-text">On enabling this setting, the LLM integration will look for a connector configuration that matches the loginid of the logged-in user. If disabled, the connector configuration marked default for the LLM integration will be used.</p>
                                 </div><br />
@@ -88,7 +88,7 @@
                                     <label>
                                         <input id="multiConfig" type="checkbox"
                                             name="multiConfig" data-ng-model="defaultLLMIntegration.isMultiConfigAvailable">
-                                        <span class="padding-left-10">Enable Per-user LLM configuration</span>
+                                        <span class="padding-left-10">Enable multi user configuration</span>
                                     </label>
                                 </div>
                             </div>
@@ -102,11 +102,11 @@
               id="solutionpack-configure-back-env-btn" data-ng-click="moveBack()"><i
                 class="fa fa-chevron-left margin-right-sm"></i>Back</button>
             <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
-              data-ng-click="moveNext()" id="solutionpack-configure-env-next-btn">Next<i class="fa fa-chevron-right margin-left-sm"></i>
+              data-ng-click="loadConnectorPage()" id="solutionpack-configure-env-next-btn">Next<i class="fa fa-chevron-right margin-left-sm"></i>
             </button>
           </div>
       </wz-step>
-      <wz-step wz-title="Connect LLM" wz-order="3" class="ingestion-modal-padding">
+      <wz-step wz-title="Configure LLM" wz-order="3" class="ingestion-modal-padding">
         <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
           <div class=" full-height overflow-auto">
             <div class="display-table fixed-table-layout full-height full-width">
@@ -115,57 +115,57 @@
                   <img class="img-responsive padding-top-70 step-image" src="{{connectLLMInfoGraphics}}">
                 </div>
                 <div class="col-md-6 padding-left-0 prerequisites-section">
-                  <div class="font-size-40 padding-5px">Connect LLM</div>
+                  <div class="font-size-40 padding-5px">Configure LLM</div>
                   <hr class="margin-0">
                   <div class="row">
                     <div class="col-md-12 col-sm-12 padding-5">
                       <div class="mp-view-summary">
                         <div class="pull-left margin-left-sm margin-right-sm">
                           <div class="custom-installing-spinner-content muted-50 margin-top-12"
-                            data-ng-if="contentDetail.status !== 'Installed'">
+                            data-ng-if="selectedConnector.status !== 'Installed'">
                             <div class="custom-installing-spinner-block">
                               <div class="custom-installing-spinner">
                                 <i class="icon icon-installing-loader custom-installing-icon fa fa-spin"></i>
                               </div>
                             </div>
                           </div>
-                          <span data-ng-show="contentDetail.status === 'Failed'"
+                          <span data-ng-show="selectedConnector.status === 'Failed'"
                             class="installing-failed-icon margin-top-8">
                             <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
                           </span>
                           <div>
-                            <img data-ng-if="contentDetail.iconLarge" src="{{contentDetail.iconLarge}}"
-                              alt="{{contentDetail.label || contentDetail.title}}" />
-                            <i data-ng-if="!contentDetail.iconLarge"
-                              class="mp-tile-icon {{contentDetail.type}}-tile-icon icon icon-{{contentDetail.type}}-card"></i>
+                            <img data-ng-if="selectedConnector.iconLarge" src="{{selectedConnector.iconLarge}}"
+                              alt="{{selectedConnector.label || selectedConnector.title}}" />
+                            <i data-ng-if="!selectedConnector.iconLarge"
+                              class="mp-tile-icon {{selectedConnector.type}}-tile-icon icon icon-{{selectedConnector.type}}-card"></i>
                           </div>
                         </div>
                         <div class="pull-left margin-left-md mp-contentDetail-container">
                           <div class="display-flex">
-                            <div class="mp-view-title text-overflow" title="{{contentDetail.label || contentDetail.title}}">
-                              {{contentDetail.label || contentDetail.title}}
-                              <span data-ng-if="contentDetail.vendor_version"
-                                class="mp-view-properties font-normal grey-text">v{{contentDetail.vendor_version}}</span>
+                            <div class="mp-view-title text-overflow" title="{{selectedConnector.label || selectedConnector.title}}">
+                              {{selectedConnector.label || selectedConnector.title}}
+                              <span data-ng-if="selectedConnector.vendor_version"
+                                class="mp-view-properties font-normal grey-text">v{{selectedConnector.vendor_version}}</span>
                             </div>
                             <span class="preview-tag-horizontal top-0"
-                              data-ng-if="contentDetail.featuredTags !== null && contentDetail.featuredTags.length > 0"
-                              data-ng-style="{'background-color': contentDetail.featuredTags[0].color}"><span
-                                class="featured-tag">{{contentDetail.featuredTags[0].tag}}</span></span>
+                              data-ng-if="selectedConnector.featuredTags !== null && selectedConnector.featuredTags.length > 0"
+                              data-ng-style="{'background-color': selectedConnector.featuredTags[0].color}"><span
+                                class="featured-tag">{{selectedConnector.featuredTags[0].tag}}</span></span>
                           </div>
                           <span class="mp-view-properties">
                             <span class="mp-view-properties grey-text">Version</span>
-                            <span>{{contentDetail.version}}</span><span
-                              data-ng-if="contentDetail.buildNumber">-{{contentDetail.buildNumber}}</span>
+                            <span>{{selectedConnector.version}}</span><span
+                              data-ng-if="selectedConnector.buildNumber">-{{selectedConnector.buildNumber}}</span>
                           </span>
                           <p class="mp-view-properties margin-bottom-xsm"><span class="grey-text">Certified:</span>
-                            {{contentDetail.certified ? 'Yes':'No' }}</p>
-                          <p class="mp-view-properties margin-bottom-sm" data-ng-show="contentDetail.publisher !== ''">
+                            {{selectedConnector.certified ? 'Yes':'No' }}</p>
+                          <p class="mp-view-properties margin-bottom-sm" data-ng-show="selectedConnector.publisher !== ''">
                             <span class="grey-text">Publisher:</span>
                             <span class="mp-view-properties"
-                              data-ng-show="(contentDetail.publisher | lowercase) === 'fortinet' || (contentDetail.publisher | lowercase) === 'cybersponse'">Fortinet
+                              data-ng-show="(selectedConnector.publisher | lowercase) === 'fortinet' || (selectedConnector.publisher | lowercase) === 'cybersponse'">Fortinet
                             </span>
                             <span class="mp-view-properties"
-                              data-ng-show="(contentDetail.publisher | lowercase) !== 'fortinet' && (contentDetail.publisher | lowercase) !== 'cybersponse'">{{contentDetail.publisher}}
+                              data-ng-show="(selectedConnector.publisher | lowercase) !== 'fortinet' && (selectedConnector.publisher | lowercase) !== 'cybersponse'">{{selectedConnector.publisher}}
                             </span>
                           </p>
                         </div>
@@ -173,11 +173,11 @@
                           <div class="mp-view-properties margin-top-sm">
                             <div class="row">
                               <div class="pull-right margin-right-sm">
-                                <div data-ng-show="contentDetail.infoContent.help_online"
+                                <div data-ng-show="selectedConnector.infoContent.help_online"
                                   class="display-inline-block padding-top-xs">
-                                  <a id="administration-links" data-ng-show="contentDetail.infoContent.help_online"
-                                    href="{{contentDetail.infoContent.help_online}}"
-                                    title="Visit for more details about this {{contentDetail.type}}" target="_blank"
+                                  <a id="administration-links" data-ng-show="selectedConnector.infoContent.help_online"
+                                    href="{{selectedConnector.infoContent.help_online}}"
+                                    title="Visit for more details about this {{selectedConnector.type}}" target="_blank"
                                     rel="noopener noreferrer" class="btn btn-default">
                                     <i class="icon icon-documentation margin-right-sm"></i>
                                     Documentation
@@ -242,10 +242,10 @@
                             <p class="margin-bottom-0">Quick Summary.</p>
                             <div style="margin-left: -17px;padding-top: 7px;">
                                 <ul>
-                                  <li><span class="grey-text">LLM Integration: </span><span>{{defaultLLMIntegration.title}}</span></li>
-                                  <li><span class="grey-text">Conversation Model: </span><span>{{defaultLLMIntegration.conversationModel}}</span></li>
-                                  <li><span class="grey-text">Playbook Generation Model: </span><span>{{defaultLLMIntegration.pBGenerationModel}}</span></li>
-                                  <li><span class="grey-text">Enable Per-user LLM configuration: </span><span>{{defaultLLMIntegration.isMultiConfigAvailable}}</span></li>
+                                  <li><span class="grey-text padding-bottom-3">LLM Integration: </span><span>{{defaultLLMIntegration.title}}</span></li>
+                                  <li><span class="grey-text padding-bottom-3">Conversation Model: </span><span>{{defaultLLMIntegration.conversationModel}}</span></li>
+                                  <li><span class="grey-text padding-bottom-3">Playbook Generation Model: </span><span>{{defaultLLMIntegration.pBGenerationModel}}</span></li>
+                                  <li><span class="grey-text padding-bottom-3">Enable Multi User Configuration: </span><span style="text-transform: capitalize;">{{defaultLLMIntegration.isMultiConfigAvailable}}</span></li>
                                 </ul>
                             </div>
                           </div>
