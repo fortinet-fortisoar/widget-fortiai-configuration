@@ -12,7 +12,12 @@
         "compatibility": [
             "7.4.3"
         ],
-        "snapshots": [],
+        "snapshots": [
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/landing-page.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/configuration-page.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/configure-llm-page.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/finish-page.png"
+        ],
         "standalone": true,
         "help_online": "",
         "windowClass": "Full Width",
