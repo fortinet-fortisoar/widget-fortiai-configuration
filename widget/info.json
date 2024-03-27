@@ -1,7 +1,7 @@
 {
     "name": "fortiAIConfiguration",
     "title": "FortiAI Configuration",
-    "subTitle": "FortiAI Configuration will configure LLM Integration to use.",
+    "subTitle": "The FortiAI Configuration widget helps to set up LLM Integration and Model to be used for a different mode of the FortiAI.",
     "version": "1.0.0",
     "published_date": 1710479047,
     "metadata": {
