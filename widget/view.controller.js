@@ -21,7 +21,7 @@
           $scope.moveBack = moveBack;
           $scope.loadConnectorPage = loadConnectorPage;
           $scope.updateLLMIntegrationData = updateLLMIntegrationData;
-          $scope.saveConnectorConfiguration = saveConnectorConfiguration;
+          $scope.saveConnector = saveConnector;
           $scope.defaultLLMIntegration = {};
           $scope.isLightTheme = $rootScope.theme.id === 'light';
           $scope.startInfoGraphics = $scope.isLightTheme ? widgetBasePath +'images/fortiAI-start-light.png': widgetBasePath +'images/fortiAI-start-dark.png';
@@ -62,7 +62,7 @@
             });
           }
 
-          function saveConnectorConfiguration(saveFrom) {
+          function saveConnector(saveFrom) {
             $scope.isConnectorConfigured = true;
             $scope.configuredConnector = false;
             var data = angular.copy($scope.connector);
