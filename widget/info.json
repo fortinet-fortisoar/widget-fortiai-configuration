@@ -19,7 +19,7 @@
             "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/finish-page.png"
         ],
         "standalone": true,
-        "help_online": "",
+        "help_online": "https://github.com/fortinet-fortisoar/widget-fortiai-configuration/blob/release/1.0.0/README.md",
         "windowClass": "Full Width",
         "category": [
             "FortiSOAR Essentials"
