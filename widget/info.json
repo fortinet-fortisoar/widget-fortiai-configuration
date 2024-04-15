@@ -1,11 +1,11 @@
 {
     "name": "fortiAIConfiguration",
     "title": "FortiAI Configuration",
-    "subTitle": "The FortiAI Configuration widget helps to set up LLM Integration and Model to be used for a different mode of the FortiAI.",
+    "subTitle": "The FortiAI Configuration widget facilitates the setup of LLM Integration and the selection of a model to be used for various modes of the FortiAI",
     "version": "1.0.0",
     "published_date": 1710479047,
     "metadata": {
-        "description": "The FortiAI Configuration widget helps to set up LLM Integration and Model to be used for a different mode of the FortiAI.",
+        "description": "The FortiAI Configuration widget facilitates the setup of LLM Integration and the selection of a model to be used for various modes of the FortiAI",
         "pages": [],
         "certified": "Yes",
         "publisher": "Fortinet",
@@ -19,7 +19,7 @@
             "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/finish-page.png"
         ],
         "standalone": true,
-        "help_online": "",
+        "help_online": "https://github.com/fortinet-fortisoar/widget-fortiai-configuration/blob/release/1.0.0/README.md",
         "windowClass": "Full Width",
         "category": [
             "FortiSOAR Essentials"
