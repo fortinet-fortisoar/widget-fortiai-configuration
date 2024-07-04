@@ -2,8 +2,8 @@
     "name": "fortiAIConfiguration",
     "title": "FortiAI Configuration",
     "subTitle": "The FortiAI Configuration widget facilitates the setup of LLM Integration and the selection of a model to be used for various modes of the FortiAI",
-    "version": "1.0.0",
-    "published_date": 1710479047,
+    "version": "3.0.0",
+    "published_date": 1720090494,
     "metadata": {
         "description": "The FortiAI Configuration widget facilitates the setup of LLM Integration and the selection of a model to be used for various modes of the FortiAI",
         "pages": [],
@@ -13,13 +13,13 @@
             "7.4.3"
         ],
         "snapshots": [
-            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/landing-page.png",
-            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/configuration-page.png",
-            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/configure-llm-page.png",
-            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-1.0.0/images/finish-page.png"
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-3.0.0/images/landing-page.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-3.0.0/images/configuration-page.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-3.0.0/images/configure-llm-page.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/fortiAIConfiguration-3.0.0/images/finish-page.png"
         ],
         "standalone": true,
-        "help_online": "https://github.com/fortinet-fortisoar/widget-fortiai-configuration/blob/release/1.0.0/README.md",
+        "help_online": "https://github.com/fortinet-fortisoar/widget-fortiai-configuration/blob/release/3.0.0/README.md",
         "windowClass": "Full Width",
         "category": [
             "FortiSOAR Essentials"
