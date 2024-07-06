@@ -1,0 +1,15 @@
+/* Copyright start
+  MIT License
+  Copyright (c) 2024 Fortinet Inc
+  Copyright end */
+  .ingestion-steps{
+      .steps-indicator {
+          li{
+                &:nth-child(4) {
+                    a::before {
+                        content: "\e923";
+                    }
+                }
+            }
+      }
+  }

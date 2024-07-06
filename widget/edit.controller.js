@@ -7,11 +7,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('editFortiAIConfiguration100Ctrl', editFortiAIConfiguration100Ctrl);
+        .controller('editFortiAIConfiguration300Ctrl', editFortiAIConfiguration300Ctrl);
 
-    editFortiAIConfiguration100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config'];
+    editFortiAIConfiguration300Ctrl.$inject = ['$scope', '$uibModalInstance', 'config'];
 
-    function editFortiAIConfiguration100Ctrl($scope, $uibModalInstance, config) {
+    function editFortiAIConfiguration300Ctrl($scope, $uibModalInstance, config) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.config = config;
