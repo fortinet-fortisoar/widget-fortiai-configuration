@@ -4,38 +4,38 @@
   Copyright end -->
 
 
-  <link rel="stylesheet" type="text/css" href="{{widgetCSS}}" />
-  <div class="modal-header">
-    <h3 class="modal-title col-md-9">FortiAI Configuration</h3>
-  </div>
-  <wizard on-finish="close()" indicators-position="top" class="cs-wizard ingestion-steps fortiai-config-wizard"
-    name="fortiAIConfiguration">
-    <wz-step wz-title="Start" wz-order="1" class="ingestion-modal-padding wizard-first-step">
-      <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
-        <div class="full-height overflow-auto">
-          <div class="display-table fixed-table-layout full-height full-width">
-            <div class="full-height display-table-cell vertical-align-middle">
-              <div class="col-md-6 display-flex align-items-center margin-top-34 padding-0">
-                <div class="full-width">
-                  <img class="img-responsive d-info-image" src="{{startInfoGraphics}}">
-                </div>
+<link rel="stylesheet" type="text/css" href="{{widgetCSS}}" />
+<div class="modal-header">
+  <h3 class="modal-title col-md-9">FortiAI Configuration</h3>
+</div>
+<wizard on-finish="close()" indicators-position="top" class="cs-wizard ingestion-steps fortiai-config-wizard"
+  name="fortiAIConfiguration">
+  <wz-step wz-title="Start" wz-order="1" class="ingestion-modal-padding wizard-first-step">
+    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
+      <div class="full-height overflow-auto">
+        <div class="display-table fixed-table-layout full-height full-width">
+          <div class="full-height display-table-cell vertical-align-middle">
+            <div class="col-md-6 display-flex align-items-center margin-top-34 padding-0">
+              <div class="full-width">
+                <img class="img-responsive d-info-image" src="{{startInfoGraphics}}">
               </div>
-              <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
-                <div class="font-size-40 line-height-1">FortiAI Configuration</div><br />
-                <div class="padding-right-30 margin-top-sm max-width-450px">
-                  <p class="font-size-14 margin-bottom-0">This wizard will assist you in configuring FortiAI within your
-                    FortiSOAR environment. The configuration process includes selecting LLM Integrations, such as OpenAI,
-                    and configuring the integration based on the FortiSOAR user login ID. Additionally, you can modify the
-                    default selected LLM model.</p>
-                </div>
-                <button type="button" class="btn btn-primary btn-sm margin-top-xlg text-transform-none font-size-14"
-                  data-ng-click="moveNext()" id="solutionpack-next-btn">Let's get started<i
-                    class="fa fa-chevron-right margin-left-sm"></i></button>
+            </div>
+            <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
+              <div class="font-size-40 line-height-1">FortiAI Configuration</div><br />
+              <div class="padding-right-30 margin-top-sm max-width-450px">
+                <p class="font-size-14 margin-bottom-0">This wizard will assist you in configuring FortiAI within your
+                  FortiSOAR environment. The configuration process includes selecting LLM Integrations, such as OpenAI,
+                  and configuring the integration based on the FortiSOAR user login ID. Additionally, you can modify the
+                  default selected LLM model.</p>
               </div>
+              <button type="button" class="btn btn-primary btn-sm margin-top-xlg text-transform-none font-size-14"
+                data-ng-click="moveNext()" id="solutionpack-next-btn">Let's get started<i
+                  class="fa fa-chevron-right margin-left-sm"></i></button>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     </wz-step>
     <wz-step wz-title="Configuration" wz-order="2" class="ingestion-modal-padding">
       <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
@@ -47,194 +47,208 @@
                   <img class="img-responsive d-info-image"
                     src="widgets/installed/fortiAIConfiguration-3.0.0/images/fortiAIConfiguration.png">
                 </div>
+=======
+    </div>
+  </wz-step>
+  <wz-step wz-title="Configuration" wz-order="2" class="ingestion-modal-padding">
+    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
+      <div class="full-height overflow-auto">
+        <div class="display-table fixed-table-layout full-height full-width">
+          <div class="full-height display-table-cell vertical-align-middle">
+            <div class="col-md-6 display-flex align-items-center margin-top-34" style="padding-left: 180px;">
+              <div class="full-width">
+                <img class="img-responsive d-info-image"
+                  src="widgets/installed/fortiAIConfiguration-3.0.0/images/fortiAIConfiguration.png">
+>>>>>>> cd55c3530cc084a56154f7861a389e5d29d0e231
               </div>
-              <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
-                <div style="border:2px solid; border-color: #29323e;" class="padding-20">
-                  <div class="font-size-30">Large Language Model (LLM) Configuration</div>
-                  <div class="padding-right-30 margin-top-sm max-width-450px">
-                    <p class="font-size-14 margin-bottom-0 grey-text">Select the LLM integration and specify the
-                      respective model to be used for different modes.</p>
-                  </div><br />
-                  <div>
-                    <div class="padding-bottom-md">
-                      <label>LLM Integration
-                        <span data-uib-tooltip="Select LLM Integration to use, e.g., OpenAI"
-                          data-tooltip-placement="top-left" data-tooltip-append-to-body="true"><i
-                            class="icon icon-information" aria-hidden="true"></i></span>
-                      </label>
-                      <div class="cs-select padding-left-3">
-                        <select class="form-control" id="mySelect" data-ng-model="defaultLLMIntegration.title"
-                          data-ng-options="llm for llm in defaultLLMIntegration.llmIntegrationsList"
-                          data-ng-change="updateLLMIntegrationData('set')" required>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="padding-bottom-md">
-                      <label>Conversation Model
-                        <span
-                          data-uib-tooltip="Select the appropriate LLM model to employ for Conversation or Response Plans / Jinja / Playbook How-To's mode."
-                          data-tooltip-placement="top-left" data-tooltip-append-to-body="true"><i
-                            class="icon icon-information" aria-hidden="true"></i></span>
-                      </label>
-                      <div class="cs-select padding-left-3">
-                        <select class="form-control" data-ng-model="defaultLLMIntegration.conversationModel"
-                          data-ng-options="model for model in defaultLLMIntegration.modelList">
-                        </select>
-                      </div>
-                    </div>
-                    <div class="padding-bottom-md">
-                      <label>Playbook Generation Model
-                        <span
-                          data-uib-tooltip="Select the LLM model to be used for Playbook Generation. Recommended model is GPT-4 or higher."
-                          data-tooltip-placement="top-left" data-tooltip-append-to-body="true"><i
-                            class="icon icon-information" aria-hidden="true"></i></span>
-                      </label>
-                      <div class="cs-select padding-left-3">
-                        <select class="form-control" data-ng-model="defaultLLMIntegration.pBGenerationModel"
-                          data-ng-options="model for model in defaultLLMIntegration.modelList">
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  style="border-left: 2px solid;border-right: 2px solid;border-bottom: 2px solid; border-color: #29323e;"
-                  class="padding-20">
-                  <div class="font-size-30">Multi User Configuration</div>
-                  <div class="padding-right-30 margin-top-sm max-width-450px">
-                    <p class="font-size-14 margin-bottom-0 grey-text">On enabling this setting, the LLM integration will
-                      look for a connector configuration that matches the loginid of the logged-in user. If disabled, the
-                      connector configuration marked default for the LLM integration will be used.</p>
-                  </div><br />
+            </div>
+            <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
+              <div style="border:2px solid; border-color: #29323e;" class="padding-20">
+                <div class="font-size-30">Large Language Model (LLM) Configuration</div>
+                <div class="padding-right-30 margin-top-sm max-width-450px">
+                  <p class="font-size-14 margin-bottom-0 grey-text">Select the LLM integration and specify the
+                    respective model to be used for different modes.</p>
+                </div><br />
+                <div>
                   <div class="padding-bottom-md">
-                    <label>
-                      <input id="multiConfig" type="checkbox" name="multiConfig"
-                        data-ng-model="defaultLLMIntegration.isMultiConfigAvailable">
-                      <span class="padding-left-10">Enable multi user configuration</span>
+                    <label>LLM Integration
+                      <span data-uib-tooltip="Select LLM Integration to use, e.g., OpenAI"
+                        data-tooltip-placement="top-left" data-tooltip-append-to-body="true"><i
+                          class="icon icon-information" aria-hidden="true"></i></span>
                     </label>
+                    <div class="cs-select padding-left-3">
+                      <select class="form-control" id="mySelect" data-ng-model="defaultLLMIntegration.title"
+                        data-ng-options="llm for llm in defaultLLMIntegration.llmIntegrationsList"
+                        data-ng-change="updateLLMIntegrationData('set')" required>
+                      </select>
+                    </div>
                   </div>
+                  <div class="padding-bottom-md">
+                    <label>Conversation Model
+                      <span
+                        data-uib-tooltip="Select the appropriate LLM model to employ for Conversation or Response Plans / Jinja / Playbook How-To's mode."
+                        data-tooltip-placement="top-left" data-tooltip-append-to-body="true"><i
+                          class="icon icon-information" aria-hidden="true"></i></span>
+                    </label>
+                    <div class="cs-select padding-left-3">
+                      <select class="form-control" data-ng-model="defaultLLMIntegration.conversationModel"
+                        data-ng-options="model for model in defaultLLMIntegration.modelList">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="padding-bottom-md">
+                    <label>Playbook Generation Model
+                      <span
+                        data-uib-tooltip="Select the LLM model to be used for Playbook Generation. Recommended model is GPT-4 or higher."
+                        data-tooltip-placement="top-left" data-tooltip-append-to-body="true"><i
+                          class="icon icon-information" aria-hidden="true"></i></span>
+                    </label>
+                    <div class="cs-select padding-left-3">
+                      <select class="form-control" data-ng-model="defaultLLMIntegration.pBGenerationModel"
+                        data-ng-options="model for model in defaultLLMIntegration.modelList">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="border-left: 2px solid;border-right: 2px solid;border-bottom: 2px solid; border-color: #29323e;"
+                class="padding-20">
+                <div class="font-size-30">Multi User Configuration</div>
+                <div class="padding-right-30 margin-top-sm max-width-450px">
+                  <p class="font-size-14 margin-bottom-0 grey-text">On enabling this setting, the LLM integration will
+                    look for a connector configuration that matches the loginid of the logged-in user. If disabled, the
+                    connector configuration marked default for the LLM integration will be used.</p>
+                </div><br />
+                <div class="padding-bottom-md">
+                  <label>
+                    <input id="multiConfig" type="checkbox" name="multiConfig"
+                      data-ng-model="defaultLLMIntegration.isMultiConfigAvailable">
+                    <span class="padding-left-10">Enable multi user configuration</span>
+                  </label>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="ingestion-modal-footer">
-        <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
-          id="solutionpack-configure-back-env-btn" data-ng-click="moveBack()"><i
-            class="fa fa-chevron-left margin-right-sm"></i>Back</button>
-        <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
-          data-ng-click="loadConnectorPage()" id="solutionpack-configure-env-next-btn">Next<i
-            class="fa fa-chevron-right margin-left-sm"></i>
-        </button>
-      </div>
-    </wz-step>
-    <wz-step wz-title="Configure LLM" wz-order="3" class="ingestion-modal-padding">
-      <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
-        <div class=" full-height overflow-auto">
-          <div class="display-table fixed-table-layout full-height full-width">
-            <div class="full-height display-table-cell vertical-align-middle">
-              <div class="col-md-6 display-flex" style="justify-content: center">
-                <img class="img-responsive padding-top-70 step-image" src="{{connectLLMInfoGraphics}}">
-              </div>
-              <div class="col-md-6 padding-left-0 prerequisites-section">
-                <div class="font-size-40 padding-5px">Configure LLM</div>
-                <hr class="margin-0">
-                <div class="row">
-                  <div class="col-md-12 col-sm-12 padding-5">
-                    <div class="mp-view-summary">
-                      <div class="pull-left margin-left-sm margin-right-sm">
-                        <div class="custom-installing-spinner-content muted-50 margin-top-12"
-                          data-ng-if="selectedConnector.status !== 'Installed'">
-                          <div class="custom-installing-spinner-block">
-                            <div class="custom-installing-spinner">
-                              <i class="icon icon-installing-loader custom-installing-icon fa fa-spin"></i>
-                            </div>
+    </div>
+    <div class="ingestion-modal-footer">
+      <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
+        id="solutionpack-configure-back-env-btn" data-ng-click="moveBack()"><i
+          class="fa fa-chevron-left margin-right-sm"></i>Back</button>
+      <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
+        data-ng-click="loadConnectorPage()" id="solutionpack-configure-env-next-btn">Next<i
+          class="fa fa-chevron-right margin-left-sm"></i>
+      </button>
+    </div>
+  </wz-step>
+  <wz-step wz-title="Configure LLM" wz-order="3" class="ingestion-modal-padding">
+    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
+      <div class=" full-height overflow-auto">
+        <div class="display-table fixed-table-layout full-height full-width">
+          <div class="full-height display-table-cell vertical-align-middle">
+            <div class="col-md-6 display-flex" style="justify-content: center">
+              <img class="img-responsive padding-top-70 step-image" src="{{connectLLMInfoGraphics}}">
+            </div>
+            <div class="col-md-6 padding-left-0 prerequisites-section">
+              <div class="font-size-40 padding-5px">Configure LLM</div>
+              <hr class="margin-0">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 padding-5">
+                  <div class="mp-view-summary">
+                    <div class="pull-left margin-left-sm margin-right-sm">
+                      <div class="custom-installing-spinner-content muted-50 margin-top-12"
+                        data-ng-if="selectedConnector.status !== 'Installed'">
+                        <div class="custom-installing-spinner-block">
+                          <div class="custom-installing-spinner">
+                            <i class="icon icon-installing-loader custom-installing-icon fa fa-spin"></i>
                           </div>
-                        </div>
-                        <span data-ng-show="selectedConnector.status === 'Failed'"
-                          class="installing-failed-icon margin-top-8">
-                          <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
-                        </span>
-                        <div>
-                          <img data-ng-if="selectedConnector.iconLarge" src="{{selectedConnector.iconLarge}}"
-                            alt="{{selectedConnector.label || selectedConnector.title}}" />
-                          <i data-ng-if="!selectedConnector.iconLarge"
-                            class="mp-tile-icon {{selectedConnector.type}}-tile-icon icon icon-{{selectedConnector.type}}-card"></i>
                         </div>
                       </div>
-                      <div class="pull-left margin-left-md mp-contentDetail-container">
-                        <div class="display-flex">
-                          <div class="mp-view-title text-overflow"
-                            title="{{selectedConnector.label || selectedConnector.title}}">
-                            {{selectedConnector.label || selectedConnector.title}}
-                            <span data-ng-if="selectedConnector.vendor_version"
-                              class="mp-view-properties font-normal grey-text">v{{selectedConnector.vendor_version}}</span>
-                          </div>
-                          <span class="preview-tag-horizontal top-0"
-                            data-ng-if="selectedConnector.featuredTags !== null && selectedConnector.featuredTags.length > 0"
-                            data-ng-style="{'background-color': selectedConnector.featuredTags[0].color}"><span
-                              class="featured-tag">{{selectedConnector.featuredTags[0].tag}}</span></span>
-                        </div>
-                        <span class="mp-view-properties">
-                          <span class="mp-view-properties grey-text">Version</span>
-                          <span>{{selectedConnector.version}}</span><span
-                            data-ng-if="selectedConnector.buildNumber">-{{selectedConnector.buildNumber}}</span>
-                        </span>
-                        <p class="mp-view-properties margin-bottom-xsm"><span class="grey-text">Certified:</span>
-                          {{selectedConnector.certified ? 'Yes':'No' }}</p>
-                        <p class="mp-view-properties margin-bottom-sm" data-ng-show="selectedConnector.publisher !== ''">
-                          <span class="grey-text">Publisher:</span>
-                          <span class="mp-view-properties"
-                            data-ng-show="(selectedConnector.publisher | lowercase) === 'fortinet' || (selectedConnector.publisher | lowercase) === 'cybersponse'">Fortinet
-                          </span>
-                          <span class="mp-view-properties"
-                            data-ng-show="(selectedConnector.publisher | lowercase) !== 'fortinet' && (selectedConnector.publisher | lowercase) !== 'cybersponse'">{{selectedConnector.publisher}}
-                          </span>
-                        </p>
+                      <span data-ng-show="selectedConnector.status === 'Failed'"
+                        class="installing-failed-icon margin-top-8">
+                        <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
+                      </span>
+                      <div>
+                        <img data-ng-if="selectedConnector.iconLarge" src="{{selectedConnector.iconLarge}}"
+                          alt="{{selectedConnector.label || selectedConnector.title}}" />
+                        <i data-ng-if="!selectedConnector.iconLarge"
+                          class="mp-tile-icon {{selectedConnector.type}}-tile-icon icon icon-{{selectedConnector.type}}-card"></i>
                       </div>
-                      <div class="pull-right display-inline-block">
-                        <div class="mp-view-properties margin-top-sm">
-                          <div class="row">
-                            <div class="pull-right margin-right-sm">
-                              <div data-ng-show="selectedConnector.infoContent.help_online"
-                                class="display-inline-block padding-top-xs">
-                                <a id="administration-links" data-ng-show="selectedConnector.infoContent.help_online"
-                                  href="{{selectedConnector.infoContent.help_online}}"
-                                  title="Visit for more details about this {{selectedConnector.type}}" target="_blank"
-                                  rel="noopener noreferrer" class="btn btn-default">
-                                  <i class="icon icon-documentation margin-right-sm"></i>
-                                  Documentation
-                                </a>
-                              </div>
+                    </div>
+                    <div class="pull-left margin-left-md mp-contentDetail-container">
+                      <div class="display-flex">
+                        <div class="mp-view-title text-overflow"
+                          title="{{selectedConnector.label || selectedConnector.title}}">
+                          {{selectedConnector.label || selectedConnector.title}}
+                          <span data-ng-if="selectedConnector.vendor_version"
+                            class="mp-view-properties font-normal grey-text">v{{selectedConnector.vendor_version}}</span>
+                        </div>
+                        <span class="preview-tag-horizontal top-0"
+                          data-ng-if="selectedConnector.featuredTags !== null && selectedConnector.featuredTags.length > 0"
+                          data-ng-style="{'background-color': selectedConnector.featuredTags[0].color}"><span
+                            class="featured-tag">{{selectedConnector.featuredTags[0].tag}}</span></span>
+                      </div>
+                      <span class="mp-view-properties">
+                        <span class="mp-view-properties grey-text">Version</span>
+                        <span>{{selectedConnector.version}}</span><span
+                          data-ng-if="selectedConnector.buildNumber">-{{selectedConnector.buildNumber}}</span>
+                      </span>
+                      <p class="mp-view-properties margin-bottom-xsm"><span class="grey-text">Certified:</span>
+                        {{selectedConnector.certified ? 'Yes':'No' }}</p>
+                      <p class="mp-view-properties margin-bottom-sm" data-ng-show="selectedConnector.publisher !== ''">
+                        <span class="grey-text">Publisher:</span>
+                        <span class="mp-view-properties"
+                          data-ng-show="(selectedConnector.publisher | lowercase) === 'fortinet' || (selectedConnector.publisher | lowercase) === 'cybersponse'">Fortinet
+                        </span>
+                        <span class="mp-view-properties"
+                          data-ng-show="(selectedConnector.publisher | lowercase) !== 'fortinet' && (selectedConnector.publisher | lowercase) !== 'cybersponse'">{{selectedConnector.publisher}}
+                        </span>
+                      </p>
+                    </div>
+                    <div class="pull-right display-inline-block">
+                      <div class="mp-view-properties margin-top-sm">
+                        <div class="row">
+                          <div class="pull-right margin-right-sm">
+                            <div data-ng-show="selectedConnector.infoContent.help_online"
+                              class="display-inline-block padding-top-xs">
+                              <a id="administration-links" data-ng-show="selectedConnector.infoContent.help_online"
+                                href="{{selectedConnector.infoContent.help_online}}"
+                                title="Visit for more details about this {{selectedConnector.type}}" target="_blank"
+                                rel="noopener noreferrer" class="btn btn-default">
+                                <i class="icon icon-documentation margin-right-sm"></i>
+                                Documentation
+                              </a>
                             </div>
-                            <div class="clearfix"></div>
                           </div>
+                          <div class="clearfix"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="clearfix"></div>
                   </div>
+                  <div class="clearfix"></div>
                 </div>
-                <hr class="margin-0">
-                <div data-ng-if="selectedConnector"
-                  class="margin-top-negative-20 margin-top-md padding-left-0 padding-right-0 connector-config-width"
-                  data-ng-include="'app/settings/connectorConfig.html'">
-                </div>
-                <div data-ng-show="selectedConnector" class="col-md-12 margin-top-18">
-                  <button type="button" class="btn btn-primary"
-                    data-ng-disabled="!(formHolder.connectorForm.$valid && formHolder.connectorForm.$dirty)"
-                    data-ng-click="saveConnector()" id="submit-llm-config-add-btn"><i
-                      class="icon icon-check margin-right-sm"></i>Save</button>
-                  <button type="button" class="btn btn-default" data-ng-disabled="processing"
-                    data-ng-click="closeConfiguration()" id="cancel-llm-config-add-btn"><i
-                      class="icon icon-close margin-right-sm"></i>Cancel</button>
-                </div>
+              </div>
+              <hr class="margin-0">
+              <div data-ng-if="selectedConnector"
+                class="margin-top-negative-20 margin-top-md padding-left-0 padding-right-0 connector-config-width"
+                data-ng-include="'app/settings/connectorConfig.html'">
+              </div>
+              <div data-ng-show="selectedConnector" class="col-md-12 margin-top-18">
+                <button type="button" class="btn btn-primary"
+                  data-ng-disabled="!(formHolder.connectorForm.$valid && formHolder.connectorForm.$dirty)"
+                  data-ng-click="saveConnector()" id="submit-llm-config-add-btn"><i
+                    class="icon icon-check margin-right-sm"></i>Save</button>
+                <button type="button" class="btn btn-default" data-ng-disabled="processing"
+                  data-ng-click="closeConfiguration()" id="cancel-llm-config-add-btn"><i
+                    class="icon icon-close margin-right-sm"></i>Cancel</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div class="ingestion-modal-footer">
         <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
           id="version-control-back-btn" data-ng-click="moveBack()"><i
@@ -286,29 +300,83 @@
                     <input id="socAssistantName" type="text" class="form-control" name="socAssistantName"
                       data-ng-model="openAIAssitant.socAssistantName" placeholder="fsr-ai-soc-assitant">
                   </div>
+=======
+    </div>
+    <div class="ingestion-modal-footer">
+      <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
+        id="version-control-back-btn" data-ng-click="moveBack()"><i
+          class="fa fa-chevron-left margin-right-sm"></i>Back</button>
+      <button type="button" class="btn btn-default pull-right btn-sm margin-top-lg margin-right-lg text-tranformtion"
+        id="skip-source-control-btn" data-ng-disabled="configuredConnector" data-ng-click="loadAssistantPage()">
+        Skip
+        <i class="fa fa-chevron-right margin-left-sm"></i></button>
+      <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
+        data-ng-disabled="!configuredConnector" data-ng-click="loadAssistantPage()" id="version-control-next-btn">Next<i
+          class="fa fa-chevron-right margin-left-sm"></i>
+      </button>
+    </div>
+  </wz-step>
+  <wz-step wz-title="Create OpenAI Assistant" wz-order="4" class="ingestion-modal-padding">
+    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
+      <div class=" full-height overflow-auto">
+        <div class="display-table fixed-table-layout full-height full-width">
+          <div class="full-height display-table-cell vertical-align-middle">
+            <div class="col-md-6 display-flex" style="justify-content: center">
+              <img class="img-responsive padding-top-70 step-image" src="{{createAssistantGraphics}}">
+            </div>
+            <div class="col-md-6 padding-left-0 prerequisites-section">
+              <div class="font-size-40 padding-5px margin-left-0">Create OpenAI Assistant</div>
+              <hr class="margin-0">
+              <div class="row">
+                <div class="col-md-6 margin-top-md">
+                  <label for="configuration-selection" class="control-label configuration-selection">Select
+                    configuration</label>
+                  <select class="form-control" id="configuration-selection" data-ng-disabled="processing"
+                    name="configurationsSelection" data-ng-model="selected.configuration"
+                    data-ng-options="configuration as configuration.name for configuration in connector.configuration track by configuration.id"
+                    data-ng-change="configurationChanged(selected.configuration)">
+                  </select>
                 </div>
-                <div class="col-md-12 margin-top-18 padding-0">
-                  <button type="button" class="btn btn-primary float-left" data-ng-click="createUpdateAssistant()" data-ng-disabled="assistantCreated"
-                    id="create-ai-assistants"><i class="icon icon-check margin-right-sm"></i>{{assistantStatus}}</button>
-                    <!-- spinner -->
-                    <div class="margin-left-sm margin-right-sm install-progress-icon col-md-1" data-ng-show="createUpdateActionClicked">
-                      <div class="custom-installing-spinner-content">
-                          <div class="custom-installing-spinner-block">
-                              <div class="custom-installing-spinner">
-                                  <i class="icon icon-installing-loader custom-installing-icon fa fa-spin green-check"></i>
-                              </div>
-                          </div>
-                      </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 margin-top-md">
+                  <label for="playbookAssistantName" class="control-label configuration-selection"> Playbook Assistant
+                    Name</label>
+                  <input id="playbookAssistantName" type="text" class="form-control" name="playbookAssistantName"
+                    data-ng-model="playbookAssistantName" placeholder="fsr-ai-playbook-assitant">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 margin-top-md">
+                  <label for="socAssistantName" class="control-label configuration-selection"> SOC Assistant
+                    Name</label>
+                  <input id="socAssistantName" type="text" class="form-control" name="socAssistantName"
+                    data-ng-model="socAssistantName" placeholder="fsr-ai-soc-assitant">
+>>>>>>> cd55c3530cc084a56154f7861a389e5d29d0e231
+                </div>
+              </div>
+              <div class="col-md-12 margin-top-18 padding-0">
+                <button type="button" class="btn btn-primary float-left" data-ng-click="createUpdateAssistant()" data-ng-disabled="assistantCreated"
+                  id="create-ai-assistants"><i class="icon icon-check margin-right-sm"></i>{{assistantStatus}}</button>
+                  <!-- spinner -->
+                  <div class="margin-left-sm margin-right-sm install-progress-icon col-md-1" data-ng-show="createUpdateActionClicked">
+                    <div class="custom-installing-spinner-content">
+                        <div class="custom-installing-spinner-block">
+                            <div class="custom-installing-spinner">
+                                <i class="icon icon-installing-loader custom-installing-icon fa fa-spin green-check"></i>
+                            </div>
+                        </div>
                     </div>
-                    <label class="text-center font-size-12 green-check margin-left-md" data-ng-show="assistantCreated">
-                      Assistant {{assistantStatus}}d successfully.
-                    </label>
-                </div>
+                  </div>
+                  <label class="text-center font-size-12 green-check margin-left-md" data-ng-show="assistantCreated">
+                    Assistant {{assistantStatus}}d successfully.
+                  </label>
               </div>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div class="ingestion-modal-footer">
         <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
           id="version-control-back-btn" data-ng-click="moveBack()"><i
@@ -329,36 +397,59 @@
                   <img class="img-responsive d-info-image"
                     src="widgets/installed/fortiAIConfiguration-3.0.0/images/finish.png">
                 </div>
+=======
+    </div>
+    <div class="ingestion-modal-footer">
+      <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
+        id="version-control-back-btn" data-ng-click="moveBack()"><i
+          class="fa fa-chevron-left margin-right-sm"></i>Back</button>
+      <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
+        data-ng-disabled="!assistantCreated" data-ng-click="moveNext()" id="version-control-next-btn">Next<i
+          class="fa fa-chevron-right margin-left-sm"></i>
+      </button>
+    </div>
+  </wz-step>
+  <wz-step wz-title="Finish" wz-order="5" class="ingestion-modal-padding wizard-first-step">
+    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
+      <div class="full-height">
+        <div class="display-table fixed-table-layout full-height full-width">
+          <div class="full-height display-table-cell vertical-align-middle">
+            <div class="col-md-6 display-flex align-items-center margin-top-34 padding-0">
+              <div class="full-width">
+                <img class="img-responsive d-info-image"
+                  src="widgets/installed/fortiAIConfiguration-3.0.0/images/finish.png">
+>>>>>>> cd55c3530cc084a56154f7861a389e5d29d0e231
               </div>
-              <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
-                <div class="font-size-35">FortiAI Configuration Summary</div>
-                <p class="font-size-14 margin-bottom-0">All prerequisites have been configured successfully.</p><br />
-                <p class="margin-bottom-0">Quick Summary.</p>
-                <div style="margin-left: -17px;padding-top: 7px;">
-                  <ul>
-                    <li><span class="grey-text padding-bottom-3">LLM Integration:
-                      </span><span>{{defaultLLMIntegration.title}}</span></li>
-                    <li><span class="grey-text padding-bottom-3">Conversation Model:
-                      </span><span>{{defaultLLMIntegration.conversationModel}}</span></li>
-                    <li><span class="grey-text padding-bottom-3">Playbook Generation Model:
-                      </span><span>{{defaultLLMIntegration.pBGenerationModel}}</span></li>
-                    <li><span class="grey-text padding-bottom-3">Enable Multi User Configuration: </span><span
-                        style="text-transform: capitalize;">{{defaultLLMIntegration.isMultiConfigAvailable}}</span></li>
-                  </ul>
-                </div>
+            </div>
+            <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
+              <div class="font-size-35">FortiAI Configuration Summary</div>
+              <p class="font-size-14 margin-bottom-0">All prerequisites have been configured successfully.</p><br />
+              <p class="margin-bottom-0">Quick Summary.</p>
+              <div style="margin-left: -17px;padding-top: 7px;">
+                <ul>
+                  <li><span class="grey-text padding-bottom-3">LLM Integration:
+                    </span><span>{{defaultLLMIntegration.title}}</span></li>
+                  <li><span class="grey-text padding-bottom-3">Conversation Model:
+                    </span><span>{{defaultLLMIntegration.conversationModel}}</span></li>
+                  <li><span class="grey-text padding-bottom-3">Playbook Generation Model:
+                    </span><span>{{defaultLLMIntegration.pBGenerationModel}}</span></li>
+                  <li><span class="grey-text padding-bottom-3">Enable Multi User Configuration: </span><span
+                      style="text-transform: capitalize;">{{defaultLLMIntegration.isMultiConfigAvailable}}</span></li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="ingestion-modal-footer">
-        <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
-          id="solutionpack-configure-back-env-btn" data-ng-click="moveBack()"><i
-            class="fa fa-chevron-left margin-right-sm"></i>Back</button>
-        <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
-          data-ng-click="moveNext()" id="solutionpack-configure-env-next-btn">Finish<i
-            class="fa fa-chevron-right margin-left-sm"></i>
-        </button>
-      </div>
-    </wz-step>
-  </wizard>
+    </div>
+    <div class="ingestion-modal-footer">
+      <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
+        id="solutionpack-configure-back-env-btn" data-ng-click="moveBack()"><i
+          class="fa fa-chevron-left margin-right-sm"></i>Back</button>
+      <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
+        data-ng-click="moveNext()" id="solutionpack-configure-env-next-btn">Finish<i
+          class="fa fa-chevron-right margin-left-sm"></i>
+      </button>
+    </div>
+  </wz-step>
+</wizard>
