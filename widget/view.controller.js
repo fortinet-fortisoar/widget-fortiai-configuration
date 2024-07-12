@@ -24,6 +24,7 @@
       $scope.saveConnector = saveConnector;
       $scope.loadAssistantPage = loadAssistantPage;
       $scope.createUpdateAssistant = createUpdateAssistant;
+      $scope.formUpdate = formUpdate;
       $scope.defaultLLMIntegration = {};
       $scope.isLightTheme = $rootScope.theme.id === 'light';
       $scope.startInfoGraphics = $scope.isLightTheme ? widgetBasePath + 'images/fortiAI-start-light.png' : widgetBasePath + 'images/fortiAI-start-dark.png';
@@ -34,6 +35,7 @@
       var attachmentData = '',soc_json_data = '', pb_instruction = '';
       var soc_assistant_id = '' , playbook_assistant_id = '';
       $scope.createUpdateActionClicked = false;
+      $scope.openAIAssitant = {};
       init();
   
       function init() {
@@ -191,13 +193,18 @@
       //load step4 - create assistant page
       function loadAssistantPage() {
         $scope.projectId = "proj_4chZohs0W0VUeubUcZk5vIsD"; //default project id given
-        $scope.playbookAssistantName = "";
-        $scope.socAssistantName = "";
+        $scope.openAIAssitant['playbookAssistantName'] = "";
+        $scope.openAIAssitant['socAssistantName'] = "";
         $scope.assistantCreated = false;
         $scope.config_name = $scope.input.selectedConfiguration.config_id;
         loadAttachmentData();
         getAssistantIds();
         WizardHandler.wizard('fortiAIConfiguration').next();
+      }
+  
+      //to enable/disable button when change in text
+      function formUpdate(){
+        $scope.assistantCreated = false;
       }
   
       //load file instruction for soc assistant from attachment module
@@ -247,6 +254,9 @@
               });
               Promise.all([soc_name_promise, pb_name_promise]).then((responses) => {
                 if (responses) {
+                  $scope.openAIAssitant.socAssistantName = responses[0].data.name;
+                  $scope.openAIAssitant.playbookAssistantName = responses[1].data.name;
+  
                   //updateAssistant();
                 }
               }).catch((error) => {
@@ -279,7 +289,7 @@
           model: $scope.defaultLLMIntegration.pBGenerationModel,
           description: 'playbook',
           instructions: JSON.stringify(pb_instruction).replace("\"",'\''), //playbook instructions
-          name: $scope.playbookAssistantName, //ui-pb-assistant,
+          name: $scope.openAIAssitant.playbookAssistantName, //ui-pb-assistant,
         }
         var config_name = $scope.input.selectedConfiguration.config_id;
         const pb_promise = fortiAiConfigService.executeAction('openai', 'create_assistant', config_name, pb_payload).then(function (pb_response) {
@@ -292,7 +302,7 @@
           description: 'soc',
           instructions: JSON.stringify(attachmentData), //txt file content
           tools: soc_json_data, //josn
-          name: $scope.socAssistantName, //ui-soc-assistant,
+          name: $scope.openAIAssitant.socAssistantName, //ui-soc-assistant,
         }
         const soc_promise = fortiAiConfigService.executeAction('openai', 'create_assistant', config_name, soc_payload).then(function (soc_response) {
           //console.log(soc_response);
@@ -314,7 +324,7 @@
           model: $scope.defaultLLMIntegration.pBGenerationModel,
           description: 'playbook',
           instructions: JSON.stringify(pb_instruction).replace("\"",'\''), //playbook instructions
-          name: $scope.playbookAssistantName, //ui-pb-assistant,
+          name: $scope.openAIAssitant.playbookAssistantName, //ui-pb-assistant,
         }
         var config_name = $scope.input.selectedConfiguration.config_id;
         const pb_promise = fortiAiConfigService.executeAction('openai', 'update_assistant', config_name, pb_payload).then(function (pb_response) {
@@ -328,7 +338,7 @@
           description: 'soc',
           instructions: JSON.stringify(attachmentData), //txt file content
           tools: soc_json_data, //josn
-          name: $scope.socAssistantName, //ui-soc-assistant,
+          name: $scope.openAIAssitant.socAssistantName, //ui-soc-assistant,
         }
         const soc_promise = fortiAiConfigService.executeAction('openai', 'update_assistant', config_name, soc_payload).then(function (soc_response) {
           //console.log(soc_response);

@@ -45,7 +45,7 @@
               <div class="col-md-6 display-flex align-items-center margin-top-34" style="padding-left: 180px;">
                 <div class="full-width">
                   <img class="img-responsive d-info-image"
-                    src="widgets/installed/fortiAIConfiguration-1.0.0/images/fortiAIConfiguration.png">
+                    src="widgets/installed/fortiAIConfiguration-3.0.0/images/fortiAIConfiguration.png">
                 </div>
               </div>
               <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
@@ -258,7 +258,7 @@
                 <img class="img-responsive padding-top-70 step-image" src="{{createAssistantGraphics}}">
               </div>
               <div class="col-md-6 padding-left-0 prerequisites-section">
-                <div class="font-size-40 padding-5px margin-left-0">Create OpenAI Assistant</div>
+                <div class="font-size-40 padding-5px margin-left-0 padding-left-0">Create OpenAI Assistant</div>
                 <hr class="margin-0">
                 <div class="row">
                   <div class="col-md-6 margin-top-md">
@@ -275,8 +275,8 @@
                   <div class="col-md-6 margin-top-md">
                     <label for="playbookAssistantName" class="control-label configuration-selection"> Playbook Assistant
                       Name</label>
-                    <input id="playbookAssistantName" type="text" class="form-control" name="playbookAssistantName"
-                      data-ng-model="playbookAssistantName" placeholder="fsr-ai-playbook-assitant">
+                    <input id="playbookAssistantName" type="text" class="form-control" name="playbookAssistantName" ng-change="formUpdate()"
+                      data-ng-model="openAIAssitant.playbookAssistantName" placeholder="fsr-ai-playbook-assitant">
                   </div>
                 </div>
                 <div class="row">
@@ -284,7 +284,7 @@
                     <label for="socAssistantName" class="control-label configuration-selection"> SOC Assistant
                       Name</label>
                     <input id="socAssistantName" type="text" class="form-control" name="socAssistantName"
-                      data-ng-model="socAssistantName" placeholder="fsr-ai-soc-assitant">
+                      data-ng-model="openAIAssitant.socAssistantName" placeholder="fsr-ai-soc-assitant">
                   </div>
                 </div>
                 <div class="col-md-12 margin-top-18 padding-0">
@@ -327,7 +327,7 @@
               <div class="col-md-6 display-flex align-items-center margin-top-34 padding-0">
                 <div class="full-width">
                   <img class="img-responsive d-info-image"
-                    src="widgets/installed/fortiAIConfiguration-1.0.0/images/finish.png">
+                    src="widgets/installed/fortiAIConfiguration-3.0.0/images/finish.png">
                 </div>
               </div>
               <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
