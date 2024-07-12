@@ -35,7 +35,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     </wz-step>
     <wz-step wz-title="Configuration" wz-order="2" class="ingestion-modal-padding">
       <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
@@ -47,19 +46,6 @@
                   <img class="img-responsive d-info-image"
                     src="widgets/installed/fortiAIConfiguration-3.0.0/images/fortiAIConfiguration.png">
                 </div>
-=======
-    </div>
-  </wz-step>
-  <wz-step wz-title="Configuration" wz-order="2" class="ingestion-modal-padding">
-    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
-      <div class="full-height overflow-auto">
-        <div class="display-table fixed-table-layout full-height full-width">
-          <div class="full-height display-table-cell vertical-align-middle">
-            <div class="col-md-6 display-flex align-items-center margin-top-34" style="padding-left: 180px;">
-              <div class="full-width">
-                <img class="img-responsive d-info-image"
-                  src="widgets/installed/fortiAIConfiguration-3.0.0/images/fortiAIConfiguration.png">
->>>>>>> cd55c3530cc084a56154f7861a389e5d29d0e231
               </div>
             </div>
             <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
@@ -248,7 +234,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div class="ingestion-modal-footer">
         <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
           id="version-control-back-btn" data-ng-click="moveBack()"><i
@@ -300,59 +285,6 @@
                     <input id="socAssistantName" type="text" class="form-control" name="socAssistantName"
                       data-ng-model="openAIAssitant.socAssistantName" placeholder="fsr-ai-soc-assitant">
                   </div>
-=======
-    </div>
-    <div class="ingestion-modal-footer">
-      <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
-        id="version-control-back-btn" data-ng-click="moveBack()"><i
-          class="fa fa-chevron-left margin-right-sm"></i>Back</button>
-      <button type="button" class="btn btn-default pull-right btn-sm margin-top-lg margin-right-lg text-tranformtion"
-        id="skip-source-control-btn" data-ng-disabled="configuredConnector" data-ng-click="loadAssistantPage()">
-        Skip
-        <i class="fa fa-chevron-right margin-left-sm"></i></button>
-      <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
-        data-ng-disabled="!configuredConnector" data-ng-click="loadAssistantPage()" id="version-control-next-btn">Next<i
-          class="fa fa-chevron-right margin-left-sm"></i>
-      </button>
-    </div>
-  </wz-step>
-  <wz-step wz-title="Create OpenAI Assistant" wz-order="4" class="ingestion-modal-padding">
-    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
-      <div class=" full-height overflow-auto">
-        <div class="display-table fixed-table-layout full-height full-width">
-          <div class="full-height display-table-cell vertical-align-middle">
-            <div class="col-md-6 display-flex" style="justify-content: center">
-              <img class="img-responsive padding-top-70 step-image" src="{{createAssistantGraphics}}">
-            </div>
-            <div class="col-md-6 padding-left-0 prerequisites-section">
-              <div class="font-size-40 padding-5px margin-left-0">Create OpenAI Assistant</div>
-              <hr class="margin-0">
-              <div class="row">
-                <div class="col-md-6 margin-top-md">
-                  <label for="configuration-selection" class="control-label configuration-selection">Select
-                    configuration</label>
-                  <select class="form-control" id="configuration-selection" data-ng-disabled="processing"
-                    name="configurationsSelection" data-ng-model="selected.configuration"
-                    data-ng-options="configuration as configuration.name for configuration in connector.configuration track by configuration.id"
-                    data-ng-change="configurationChanged(selected.configuration)">
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 margin-top-md">
-                  <label for="playbookAssistantName" class="control-label configuration-selection"> Playbook Assistant
-                    Name</label>
-                  <input id="playbookAssistantName" type="text" class="form-control" name="playbookAssistantName"
-                    data-ng-model="playbookAssistantName" placeholder="fsr-ai-playbook-assitant">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 margin-top-md">
-                  <label for="socAssistantName" class="control-label configuration-selection"> SOC Assistant
-                    Name</label>
-                  <input id="socAssistantName" type="text" class="form-control" name="socAssistantName"
-                    data-ng-model="socAssistantName" placeholder="fsr-ai-soc-assitant">
->>>>>>> cd55c3530cc084a56154f7861a389e5d29d0e231
                 </div>
               </div>
               <div class="col-md-12 margin-top-18 padding-0">
@@ -376,7 +308,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div class="ingestion-modal-footer">
         <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
           id="version-control-back-btn" data-ng-click="moveBack()"><i
@@ -397,28 +328,6 @@
                   <img class="img-responsive d-info-image"
                     src="widgets/installed/fortiAIConfiguration-3.0.0/images/finish.png">
                 </div>
-=======
-    </div>
-    <div class="ingestion-modal-footer">
-      <button type="button" class="btn btn-sm btn-second-primary margin-top-lg margin-left-lg"
-        id="version-control-back-btn" data-ng-click="moveBack()"><i
-          class="fa fa-chevron-left margin-right-sm"></i>Back</button>
-      <button type="button" class="btn btn-primary pull-right btn-sm margin-top-lg margin-right-lg"
-        data-ng-disabled="!assistantCreated" data-ng-click="moveNext()" id="version-control-next-btn">Next<i
-          class="fa fa-chevron-right margin-left-sm"></i>
-      </button>
-    </div>
-  </wz-step>
-  <wz-step wz-title="Finish" wz-order="5" class="ingestion-modal-padding wizard-first-step">
-    <div class="full-width wz-step-height padding-bottom-md solutionpack-wizard-modal-body">
-      <div class="full-height">
-        <div class="display-table fixed-table-layout full-height full-width">
-          <div class="full-height display-table-cell vertical-align-middle">
-            <div class="col-md-6 display-flex align-items-center margin-top-34 padding-0">
-              <div class="full-width">
-                <img class="img-responsive d-info-image"
-                  src="widgets/installed/fortiAIConfiguration-3.0.0/images/finish.png">
->>>>>>> cd55c3530cc084a56154f7861a389e5d29d0e231
               </div>
             </div>
             <div class="col-md-6 prerequisites-section padding-bottom-25 padding-left-0">
