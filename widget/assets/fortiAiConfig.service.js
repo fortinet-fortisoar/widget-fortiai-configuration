@@ -42,7 +42,7 @@
               "field": "key",
               "operator": "like",
               "_operator": "like",
-              "value": "%FortiAI Configurations%",
+              "value": "%fortiai-configurations%",
               "type": "primitive"
             },
             {
