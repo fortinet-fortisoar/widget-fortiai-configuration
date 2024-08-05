@@ -1,10 +1,10 @@
 | [Home](../README.md) |
-|--------------------------------------------|
+|----------------------|
 
 # Installation
 
 > [!NOTE]  
-> The **FortiAI Configuration** widget installs with the <em>FortiAI</em> solution pack and hence may not require separate installation.
+> The **FortiAI Configuration** widget installs with the [*FortiAI* solution pack](https://github.com/fortinet-fortisoar/solution-pack-fortinet-advisor/blob/develop/docs/setup.md#installation) and hence may not require separate installation.
 
 1. Click **Content Hub** > **Discover**.
 
@@ -15,7 +15,7 @@
 # Configuration
 
 > [!NOTE]  
-> The **FortiAI Configuration** launches when configuring <em>FortiAI</em> solution pack and does not require an independent configuration.
+> The **FortiAI Configuration** launches when configuring [*FortiAI* solution pack](https://github.com/fortinet-fortisoar/solution-pack-fortinet-advisor/blob/develop/docs/setup.md#configuration) and does not require an independent configuration.
 
 ## Next Steps
 
